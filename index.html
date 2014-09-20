@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html data-ng-app="DigiScale" manifest="digiscale.manifest">
+<head>
+  <meta name="description" content="Digital scale, weight to volume" />
+  <meta charset=utf-8 />
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2014 by jswetzen (http://jsbin.com/geqas/16/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name = "viewport" content = "initial-scale = 1.5, maximum-scale = 1.5, user-scalable = no">
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-touch.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <script src="js/bootstrap.min.js"></script>
+  <link href="css/style.css" type="text/css" rel="stylesheet"/>
+  <script type="text/javascript" src="js/script.js"></script>
+  <title>Digitala Vågen</title>
+</head>
+<body>
+  <div data-ng-controller="DigiScaleCtrl">
+    <div id="controls">
+      <div id="ingredient">
+        <typeahead items="itemNames" prompt="Börja skriva en ingrediens" model="ingredient" on-select="onItemSelected()" />
+      </div>
+      <div id="weight-unit" class="unit">
+        Gram
+      </div>
+      <div id="volume-unit" class="unit">
+        Deciliter
+      </div>
+      <div id="weight" class="measure">
+        <input type="number" ng-model="weight" clear-on-click ng-change="setWeightChanged()" />
+      </div>
+      <div id="volume" class="measure">
+        <input type="number" ng-model="volume" clear-on-click ng-change="setVolumeChanged()" />
+      </div>
+  </div>
+</body>
+</html>
