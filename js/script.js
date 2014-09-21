@@ -25,6 +25,28 @@ module.directive('cursorEndOnClick', function () {
     };
 });
 
+module.directive('saveLastValue', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            scope.$watch(attrs.ngModel, function (v) {
+                console.log('value changed, new value is: ' + v);
+            });
+        }
+    };
+});
+
+module.directive('nonEmpty', function() {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.on('blur', function () {
+              console.log("Value on blur: "+ this.value); //Show the value at blur
+            });
+        }
+    };
+});
+
 module.directive('typeahead', function($timeout) {
   return {
     restrict: 'AEC',
@@ -138,12 +160,10 @@ function DigiScaleCtrl($scope) {
 
   $scope.setWeightChanged = function() {
     $scope.lastFieldChanged = 'weight';
-    alert('weight last changed');
     $scope.updateConversion();
   };
   $scope.setVolumeChanged = function() {
     $scope.lastFieldChanged = 'volume';
-    alert('volume last changed');
     $scope.updateConversion();
   };
 
